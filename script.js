@@ -17,5 +17,6 @@ theTales = ['5p+Q5YCL5pmC56m66KOP55qEIEFzcGFyYWdhbGl6IOaIkOmVt+WcqOWNl+Wci+eahOe
 '5p+Q5YCL5pmC56m66KOP55qEIEFzcGFyYWdhbGl6IOWcqOebguiYreebhuevgOmCo+S4gOWkqeiugOWujOS6huS6uumhnueZvOaYjueahOWFqOmDqOeahOaVuOWtl+OAgeespuiZn+WSjOW5vuS9leezu+e1seeahOWFrOW8j+OAgeW9ouW8j+WSjOiuiuaPm+azleWJh++8jOS4puWcqOeJueWIpeS4jeaDs+Wvq+aVuOWtuOS9nOalreeahOmCo+WAi+mAseacq+aKiuiyu+mmrOacgOW+jOWumueQhueahOitieaYjuS6pOe1puS6huiAgeW4q+OAgg==',
 '5p+Q5YCL5pmC56m66KOP55qEIEFzcGFyYWdhbGl6IOWwjemCo+WkqeWcqOaVmeWupOi1sOmBk+S4iuaKiuWNiOmkkOeJm+WltueBkeWIsOWlueW2hOaWsOeahOijveacjeijmeS4iueahOeUt+WtqeWtkOaHt+aBqOWcqOW/g++8jOWboOatpOi2geeVoualreemruWQiOeFp+aZguaJgOacieS6uumDveeci+iRl+mPoemgreeahOS4gOeerOmWk+WQu+S6huS7luOAgg==',]
 
-aTale = document.getElementById('a-tale')
-aTale.innerText = b64DecodeUnicode(theTales[Math.floor(Math.random()*theTales.length)])
+aTaleText = b64DecodeUnicode(theTales[Math.floor(Math.random()*theTales.length)])
+document.getElementById('a-tale').innerText = aTaleText
+document.getElementById('a-tale-shadow').innerText = aTaleText

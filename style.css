@@ -8,11 +8,32 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.ctn {
+.ctn, .ctn-shadow-inner {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100vh;
+}
+
+.ctn-shadow-inner {
+    position: absolute;
+    top: -10vh;
+    right: 0;
+    height: 100vh;
+    background: #0d210c;
+    color: #fff;
+    width: 100vw;
+}
+
+.ctn-shadow {
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    height: 100vh;
+    margin-bottom: -10vh;
+    width: 30vw;
+    clip-path: url(#cross);
+    overflow: hidden;
 }
 
 .title {
