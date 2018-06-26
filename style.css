@@ -1,0 +1,72 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.ctn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.title {
+    margin-top: 10vh;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: normal;
+}
+
+.title h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-top: 0.3rem;
+    font-weight: normal;
+}
+
+.tale {
+    /* flex-grow: 1; */
+    font-size: 3rem;
+    /* margin-top: 10vh; */
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.desc {
+    font-size: 1.2rem;
+    margin-bottom: 10vh;
+    color: #aaa;
+}
+
+.title, .desc {
+    color: transparent;
+    background-image: url('title.png');
+    background-repeat: no-repeat;
+    background-size: auto 90%;
+    background-position: center;
+}
+
+.desc {
+    background-image: url('desc.png');
+    background-size: auto 50%;
+}
+
+html {
+    font-size: 1.1vw;
+}
+
+@media screen and (orientation:portrait) {
+
+html {
+    font-size: 2.5vw;
+}
+
+}
