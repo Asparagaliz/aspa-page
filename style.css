@@ -15,7 +15,7 @@ body {
     height: 100vh;
 }
 
-.ctn-shadow-inner {
+/* .ctn-shadow-inner {
     position: absolute;
     top: -10vh;
     right: 0;
@@ -32,8 +32,23 @@ body {
     height: 100vh;
     margin-bottom: -10vh;
     width: 30vw;
-    clip-path: url(#cross);
+    clip-path: url(#aspa1);
     overflow: hidden;
+} */
+
+.ctn-shadow-inner {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0d210c;
+    color: #fff;
+    overflow: hidden;
+}
+
+.svg-aspa1 .ctn-shadow-inner {
+    display: flex;
+    clip-path: url(#aspa1);
 }
 
 .title {
