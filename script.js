@@ -1,3 +1,5 @@
+// Text
+
 function b64EncodeUnicode(str) {
 	return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
 		return String.fromCharCode('0x' + p1);
@@ -8,14 +10,6 @@ function b64DecodeUnicode(str) {
 	return decodeURIComponent(atob(str).split('').map(function(c) {
 		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
 	}).join(''));
-}
-
-function setSVGsize(id, width, height) {
-	sizeScale = document.body.clientHeight / height
-	sizeTransformX = (document.body.clientWidth - width*sizeScale)/sizeScale
-	sizeTransformY = document.body.clientHeight * 0.05
-	svg = document.getElementById(id)
-	svg.setAttribute("transform",`scale(${sizeScale}) translate(${sizeTransformX}, ${sizeTransformY})`)
 }
 
 theTales = ['5p+Q5YCL5pmC56m66KOP55qEIEFzcGFyYWdhbGl6IOaIkOmVt+WcqOWNl+Wci+eahOemj+WIqemZou+8jOWcqCA3IOatsuaZguiiq+mkiueItuavjeW4tuWbnuWutu+8jOWcqCAxMyDmrbLnmoTmmYLlgJnlm6DngrrlnLDkuIvpkLXmspnmnpfkuovku7blpLHljrvkuobppIrniLbmr43vvIzmraTlvozkuIDnm7Tnjajoh6rmtYHmtarjgII=',
@@ -29,11 +23,52 @@ aTaleText = b64DecodeUnicode(theTales[Math.floor(Math.random()*theTales.length)]
 document.getElementById('a-tale').innerText = aTaleText
 document.getElementById('a-tale-shadow').innerText = aTaleText
 
-function setSVGsizeSets() {
-	setSVGsize("aspa1",528.93,637.25)
+// SVG
+
+function setSvgSize(id, width, height) {
+	fullVw = document.body.clientWidth
+	fullVh = document.body.clientHeight
+	// console.log(fullVw, fullVh)
+	sizeScale = fullVh / height
+	sizeTransformX = (fullVw - width*sizeScale)/sizeScale
+	sizeTransformY = (fullVh*1.05 - height*sizeScale)/sizeScale
+	svg = document.getElementById(id)
+	svg.setAttribute("transform",`scale(${sizeScale}) translate(${sizeTransformX}, ${sizeTransformY})`)
 }
-window.addEventListener('resize', setSVGsizeSets)
-setSVGsizeSets()
+
+function setSvgRender(id, width, height) {
+	// First Run to Clone
+	if ((document.querySelector(`.svg-${id} .ctn-shadow-inner`))&&(!document.getElementById(id+"-render"))) {
+		temp = document.getElementById(id).cloneNode()
+		temp.id = temp.id+="-render"
+		document.getElementsByTagName("svg")[0].appendChild(temp)
+	}
+	// Resize
+	if (document.querySelector(`.svg-${id} .ctn-shadow-inner`)) {
+		setSvgSize(id, width, height)
+		setSvgSize(id+"-render", width, height)
+		document.querySelector(`.svg-${id} .ctn-shadow-inner`).style.clipPath = `url(#${id}-render)`
+		// document.querySelector(`.svg-${id} .ctn-shadow-inner`).style.clipPath = `url(#${id})`
+		setTimeout(function(){ document.querySelector(`.svg-${id} .ctn-shadow-inner`).style.clipPath = `url(#${id})` }, 0)
+	}
+}
+
+function setSvgSizeSets() {
+	setSvgRender("aspa1",528.93,637.25)
+	// setSvgSize("aspa1-b",528.93,637.25)
+	// temp = document.getElementsByTagName("body")[0].classList.toString()
+	// document.getElementsByTagName("body")[0].classList = ""
+	// document.getElementsByTagName("body")[0].classList = temp
+	// document.getElementsByTagName("body")[0].classList += " render" + Math.random()
+	// if (document.querySelector(".svg-aspa1 .ctn-shadow-inner")) {
+	// 	document.querySelector(".svg-aspa1 .ctn-shadow-inner").style.clipPath = "url(#aspa1-b)"
+	// 	setTimeout(function(){ document.querySelector(".svg-aspa1 .ctn-shadow-inner").style.clipPath = "url(#aspa1)" }, 0)
+	// }
+}
 
 svgRandoms = ["svg-aspa1", "", "", "", ""]
-document.getElementsByTagName("body")[0].classList += svgRandoms[Math.floor(Math.random()*svgRandoms.length)]
+document.getElementsByTagName("body")[0].classList += " " + svgRandoms[Math.floor(Math.random()*svgRandoms.length)]
+
+window.addEventListener('resize', setSvgSizeSets)
+// window.requestAnimationFrame(setSvgSizeSets)
+setSvgSizeSets()

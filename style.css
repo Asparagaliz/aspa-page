@@ -90,6 +90,10 @@ body {
     background-position: center;
 }
 
+.svg-aspa1 .ctn-shadow-inner .title {
+    background-image: url('title-f.png');
+}
+
 .desc {
     background-image: url('desc.png');
     background-size: auto 50%;
